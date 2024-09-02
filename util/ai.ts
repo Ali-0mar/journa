@@ -72,7 +72,7 @@ const getPrompt = async (content: any) => {
 
 export const analyzeEntry = async (entry: any) => {
   const input = await getPrompt(entry.content);
-  const model = new Gemini({ apiKey: "AIzaSyCc_2G-mFtQla6w4EQ2U3Vpc16JwHhBAtA", temperature: 0 });
+  const model = new Gemini({ apiKey: process.env.GOOGLE_API_KEY, temperature: 0 });
   const output = (await model.invoke(input)).content.toString();
 
   try {
@@ -95,7 +95,7 @@ export const qa = async (question: any, entries: any) => {
         metadata: { source: entry.id, date: entry.createdAt },
       })
   );
-  const model = new Gemini({ temperature: 0 });
+  const model = new Gemini({apiKey: process.env.GOOGLE_API_KEY, temperature: 0 });
   const chain = loadQARefineChain(model);
   const embeddings = new GeminiEmbeddings();
   const store = await MemoryVectorStore.fromDocuments(docs, embeddings);
