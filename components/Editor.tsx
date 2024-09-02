@@ -1,11 +1,12 @@
 'use client'
 import { updateEntry, deleteEntry } from '@/util/api'
 import { useState } from 'react'
+//@ts-ignore
 import { useAutosave } from 'react-autosave'
 import Spinner from './Spinner'
 import { useRouter } from 'next/navigation'
 
-const Editor = ({ entry }) => {
+const Editor = ({ entry }: any) => {
   const [text, setText] = useState(entry.content)
   const [currentEntry, setEntry] = useState(entry)
   const [isSaving, setIsSaving] = useState(false)
@@ -18,7 +19,7 @@ const Editor = ({ entry }) => {
   }
   useAutosave({
     data: text,
-    onSave: async (_text) => {
+    onSave: async (_text: string) => {
       if (_text === entry.content) return
       setIsSaving(true)
 

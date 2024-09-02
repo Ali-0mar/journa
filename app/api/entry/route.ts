@@ -31,7 +31,7 @@ export const POST = async (request: Request) => {
       },
     },
   })
-
+  //@ts-ignore
   update(['/journal'])
 
   return NextResponse.json({ data: entry })

@@ -4,7 +4,7 @@ import { getUserFromClerkID } from '@/util/auth'
 import { prisma } from '@/util/db'
 import { NextResponse } from 'next/server'
 
-export const DELETE = async (request: Request, { params }) => {
+export const DELETE = async (request: Request, { params }: any) => {
   const user = await getUserFromClerkID()
 
   await prisma.journalEntry.delete({
@@ -15,12 +15,12 @@ export const DELETE = async (request: Request, { params }) => {
       },
     },
   })
-
+  //@ts-ignore
   update(['/journal'])
 
   return NextResponse.json({ data: { id: params.id } })
 }
-
+//@ts-ignore
 export const PATCH = async (request: Request, { params }) => {
   const { updates } = await request.json()
   const user = await getUserFromClerkID()
@@ -47,7 +47,7 @@ export const PATCH = async (request: Request, { params }) => {
       ...analysis,
     },
   })
-
+  //@ts-ignore
   update(['/journal'])
 
   return NextResponse.json({ data: { ...entry, analysis: savedAnalysis } })
