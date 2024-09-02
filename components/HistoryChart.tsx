@@ -1,4 +1,5 @@
 'use client'
+//@ts-ignore
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from 'recharts'
 
 const CustomTooltip = ({ payload, label, active }: any) => {
