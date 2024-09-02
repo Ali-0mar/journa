@@ -1,7 +1,7 @@
 import Editor from '@/components/Editor'
 import { getUserFromClerkID } from '@/util/auth'
 import { prisma } from '@/util/db'
-
+//@ts-ignore
 const getEntry = async (id: any) => {
   const user = await getUserFromClerkID()
   const entry = await prisma.journalEntry.findUnique({
